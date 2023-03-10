@@ -7,7 +7,7 @@ from project.services import GenresService
 from project.services.movies_service import MoviesService
 from project.services.directors_service import DirectorsService
 from project.services.users_service import UsersService
-from service.auth import AuthService
+from project.services.auth_service import AuthService
 from project.setup.db import db
 
 # DAO
