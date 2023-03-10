@@ -12,4 +12,4 @@ def shell():
         "Genre": Genre,
     }
 
-app.run()
+app.run(debug=True, port=5007)

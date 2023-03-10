@@ -1,7 +1,7 @@
 from project.models import User
 
 
-class UserDAO:
+class UsersDAO:
     def __init__(self, session):
         self.session = session
 
@@ -26,7 +26,8 @@ class UserDAO:
         self.session.commit()
 
     def update(self, user_data):
-        user = self.get_one(user_data.get("email"))
+        user = self.get_one(user_data.get("id"))
+        user.username = user_data.get("email")
         user.username = user_data.get("password")
         user.username = user_data.get("name")
         user.username = user_data.get("surname")
