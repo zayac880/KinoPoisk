@@ -40,9 +40,6 @@ class LoginView(Resource):
         access_token = data.get("access_token")
         refresh_token = data.get("refresh_token")
 
-        if None in [access_token, refresh_token]:
-            return {"message": "Недействительные токены"}, 400
-
-        tokens = auth_service.approve_refresh_token(refresh_token)
+        tokens = auth_service.approve_refresh_token(access_token, refresh_token)
 
         return tokens, 200
