@@ -22,10 +22,10 @@ movie: Model = api.model('Фильм', {
 })
 
 user: Model = api.model('пользователь', {
-    'id': fields.Integer(required=True),
-    'email ': fields.String(required=True),
-    'password ': fields.String(required=True),
-    'name': fields.String(required=True),
-    'surname ': fields.String(required=True),
-    'favorite_genre ': fields.String(required=True)
+    'id': fields.Integer(required=True, example='1'),
+    'email ': fields.String(required=True, example='email'),
+    'password ': fields.String(required=True, example='password='),
+    'name': fields.String(required=True, example='name'),
+    'surname ': fields.String(required=True, example='surname'),
+    'favorite_genre ': fields.String(required=True, example='favorite_genre')
 })
