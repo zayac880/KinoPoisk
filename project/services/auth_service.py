@@ -23,7 +23,6 @@ class AuthService:
 
         data = {
             "email": user.email,
-            "role": user.role
         }
 
         min30 = datetime.datetime.utcnow() + datetime.timedelta(minutes=60)
@@ -37,13 +36,13 @@ class AuthService:
 
     def approve_refresh_token(self, refresh_token):
         data = jwt.decode(jwt=refresh_token, key=JWT_SECRET, algorithms=[JWT_ALGORITHM])
-        username = data.get("email ")
+        email = data.get("email ")
 
-        user = self.user_service.get_by_username(username=username)
+        user = self.user_service.get_user_by_email(email=email)
 
         if user is None:
-            raise Exception()
-        return self.generate_tokens(username, user.password, is_refresh=True)
+            raise Exception(f"{email}Пользователь не найден")
+        return self.generate_tokens(email, user.password, is_refresh=True)
 
 
     def validate_tokens(self, access_token, refresh_token):

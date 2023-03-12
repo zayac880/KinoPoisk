@@ -14,7 +14,7 @@ class UsersDAO:
         return self.session.query(User).all()
 
     def get_by_username(self, username):
-        return self.session.query(User).filter(User.username == username).first()
+        return self.session.query(User).filter(User.email == username).first()
 
     def get_by_email(self, email: str) -> Optional[User]:
         return self.session.query(User).filter_by(email=email).first()
