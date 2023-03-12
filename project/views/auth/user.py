@@ -3,7 +3,7 @@ from flask_restx import Namespace, Resource
 from project.container import user_service
 from project.setup.api.models import user
 
-api = Namespace('user')
+api = Namespace('users')
 
 
 @api.route('/')

@@ -4,7 +4,7 @@ from typing import Any, Dict, List, Type
 from sqlalchemy.exc import IntegrityError
 
 from project.config import config
-from project.models import Genre, Director, Movie
+from project.models import Genre, Director, Movie, User
 from project.server import create_app
 from project.setup.db import db, models
 from project.utils import read_json
@@ -25,6 +25,7 @@ if __name__ == '__main__':
         load_data(fixtures['genres'], Genre)
         load_data(fixtures['directors'], Director)
         load_data(fixtures['movies'], Movie)
+        load_data(fixtures['users'], User)
 
 
         with suppress(IntegrityError):

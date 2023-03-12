@@ -19,6 +19,9 @@ class UsersService:
     def get_by_username(self, username):
         return self.dao.get_by_username(username)
 
+    def get_user_by_email(self, email):
+        return self.dao.get_by_email(email)
+
     def create(self, user_data):
         user_data['password'] = self.make_user_password_hash(user_data.get('password'))
         return self.dao.create(user_data)
@@ -44,3 +47,4 @@ class UsersService:
             password_hash,
             self.make_user_password_hash(other_password),
         )
+

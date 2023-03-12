@@ -1,3 +1,5 @@
+from typing import Optional
+
 from project.models import User
 
 
@@ -13,6 +15,9 @@ class UsersDAO:
 
     def get_by_username(self, username):
         return self.session.query(User).filter(User.username == username).first()
+
+    def get_by_email(self, email: str) -> Optional[User]:
+        return self.session.query(User).filter_by(email=email).first()
 
     def create(self, user_data):
         ent = User(**user_data)
@@ -35,3 +40,4 @@ class UsersDAO:
 
         self.session.add(user)
         self.session.commit()
+
