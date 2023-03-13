@@ -13,7 +13,7 @@ class UsersView(Resource):
     @api.marshal_with(user, as_list=True, code=200, description='OK')
     def get(self):
         """
-        Get all genres.
+        Get all users.
         """
         return user_service.get_all()
 
@@ -24,7 +24,7 @@ class UserView(Resource):
     @api.marshal_with(user, code=200, description='OK')
     def get(self, user_id: int):
         """
-        Get genre by id.
+        Get user by id.
         """
         return user_service.get_one(user_id)
 
