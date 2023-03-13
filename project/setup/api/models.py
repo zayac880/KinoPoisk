@@ -14,7 +14,7 @@ director: Model = api.model('Директор', {
 
 movie: Model = api.model('Фильм', {
     'id': fields.Integer(required=True, example=15),
-    'name': fields.String(required=True, max_length=100, example='Сияние'),
+    'title': fields.String(required=True, max_length=100, example='Сияние'),
     'description': fields.String(required=True, max_length=255, example='Джек Торренс с женой и сыном приезжает в элегантный отдалённый отель, чтобы работать смотрителем во время мертвого сезона. Торренс здесь раньше никогда не бывал. Или это не совсем так? Ответ лежит во мраке, сотканном из преступного кошмара.'),
     'trailer': fields.String(required=True, max_length=255, example='https://www.youtube.com/watch?v=NMSUEhDWXH0'),
     'year': fields.Integer(required=True, example=1980),
@@ -23,9 +23,9 @@ movie: Model = api.model('Фильм', {
 
 user: Model = api.model('пользователь', {
     'id': fields.Integer(required=True, example='1'),
-    'email ': fields.String(required=True, example='email'),
-    'password ': fields.String(required=True, example='password='),
+    'email': fields.String(required=True, example='email'),
+    'password': fields.String(required=True, example='password='),
     'name': fields.String(required=True, example='name'),
-    'surname ': fields.String(required=True, example='surname'),
-    'favorite_genre ': fields.String(required=True, example='favorite_genre')
+    'surname': fields.String(required=True, example='surname'),
+    'favorite_genre': fields.String(required=True, example='favorite_genre')
 })

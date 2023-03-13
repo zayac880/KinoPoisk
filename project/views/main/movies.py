@@ -13,7 +13,7 @@ class MoviesView(Resource):
     @movies_ns.marshal_with(movie, as_list=True, code=200, description='OK')
     def get(self):
         """
-        Get all genres.
+        Get all movies.
         """
         return movie_service.get_all(**page_parser.parse_args())
 
@@ -24,6 +24,6 @@ class MovieView(Resource):
     @movies_ns.marshal_with(movie, code=200, description='OK')
     def get(self, movie_id: int):
         """
-        Get genre by id.
+        Get movie by id.
         """
         return movie_service.get_item(movie_id)

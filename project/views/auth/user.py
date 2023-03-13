@@ -15,12 +15,7 @@ class UserView(Resource):
         """
         Get all users.
         """
-        users = user_service.get_all()
-        user_objects = []
-        for user in users:
-            user_obj = User(id=user.id, name=user.name, email=user.email, password=user.password)
-            user_objects.append(user_obj)
-        return user_objects
+        return user_service.get_all()
 
 
     def patch(self):

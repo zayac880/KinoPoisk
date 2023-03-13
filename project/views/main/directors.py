@@ -13,7 +13,7 @@ class DirectorsView(Resource):
     @directors_ns.marshal_with(director, as_list=True, code=200, description='OK')
     def get(self):
         """
-        Get all genres.
+        Get all directors.
         """
         return director_service.get_all(**page_parser.parse_args())
 
@@ -24,6 +24,6 @@ class DirectorsView(Resource):
     @directors_ns.marshal_with(director, code=200, description='OK')
     def get(self, director_id: int):
         """
-        Get genre by id.
+        Get director by id.
         """
         return director_service.get_item(director_id)
