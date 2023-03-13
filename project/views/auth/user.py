@@ -45,7 +45,9 @@ class UserView(Resource):
 class UserView(Resource):
     def put(self):
         data = request.json
-
+        """
+        Update user password by id.
+        """
         email = data.get("email")
         old_password = data.get("old_password")
         new_password = data.get("new_password")
@@ -53,7 +55,6 @@ class UserView(Resource):
         user = user_service.get_user_by_email(email)
 
         if user_service.compare_passwords(user.password, old_password):
-            # user.password = user_service.make_user_password_hash(new_password)
             user_service.update_password({
                 "id": user.id,
                 "password": new_password

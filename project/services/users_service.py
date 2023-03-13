@@ -10,11 +10,11 @@ class UsersService:
     def __init__(self, dao: UsersDAO):
         self.dao = dao
 
-    def get_one(self, uid):
-        return self.dao.get_one(uid)
-
     def get_all(self):
         return self.dao.get_all()
+
+    def get_one(self, uid):
+        return self.dao.get_one(uid)
 
     def get_by_username(self, username):
         return self.dao.get_by_username(username)

@@ -34,7 +34,7 @@ class AuthService:
         refresh_token = jwt.encode(data, JWT_SECRET, JWT_ALGORITHM)
         return {"access_token": access_token, "refresh_token": refresh_token}
 
-    def approve_refresh_token(self, refresh_token,access_token):
+    def approve_refresh_token(self, refresh_token):
         data = jwt.decode(jwt=refresh_token, key=JWT_SECRET, algorithms=[JWT_ALGORITHM])
         email = data.get("email")
 
@@ -45,10 +45,3 @@ class AuthService:
         return self.generate_tokens(email, user.password, is_refresh=True)
 
 
-    def validate_tokens(self, access_token, refresh_token):
-        for token in [access_token, refresh_token]:
-            try:
-                jwt.decode(jwt=token, key=JWT_SECRET, algorithms=[JWT_ALGORITHM])
-            except Exception as e:
-                return False
-        return True

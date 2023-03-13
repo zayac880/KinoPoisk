@@ -10,7 +10,9 @@ api = Namespace('auth')
 class RegisterViews(Resource):
     def post(self):
         data = request.json
-
+        """
+        register email, password.
+        """
         email = data.get("email")
         password = data.get("password")
 
@@ -26,6 +28,13 @@ class RegisterViews(Resource):
 class LoginView(Resource):
     def post(self):
         data = request.json
+        """
+        User has been authenticated, we return a response to the user in the form
+    {
+   "access_token": "qwesfsdfa",
+   "refresh_token": "kjhgfgjakda",
+    }
+        """
         email = data.get('email')
         password = data.get('password')
         if not all([email, password]):
@@ -36,7 +45,9 @@ class LoginView(Resource):
 
     def put(self):
         data = request.json
-
+        """
+        Refresh token.
+        """
         access_token = data.get("access_token")
         refresh_token = data.get("refresh_token")
 
