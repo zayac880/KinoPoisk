@@ -30,7 +30,7 @@ class UsersDAO:
         self.session.delete(user)
         self.session.commit()
 
-    def update(self, user_data):
+    def update_user(self, user_data):
         user = self.get_one(user_data.get("id"))
         user.name = user_data.get("name")
         user.surname = user_data.get("surname")
@@ -39,3 +39,9 @@ class UsersDAO:
         self.session.add(user)
         self.session.commit()
 
+    def update_password(self, data):
+        user = self.get_one(data.get("id"))
+        user.password = data.get("password")
+
+        self.session.add(user)
+        self.session.commit()

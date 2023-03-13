@@ -1,3 +1,4 @@
+from flask import request
 from flask_restx import Namespace, Resource
 
 from project.container import user_service
@@ -28,20 +29,35 @@ class UserView(Resource):
         """
         return user_service.get_one(user_id)
 
-    @api.expect(user)
     @api.response(404, 'Not Found')
-    @api.response(200, 'OK')
+    @api.marshal_with(user, code=200, description='OK')
     def patch(self, user_id: int):
         """
         Update user by id.
         """
         user_data = api.payload
         user_data['id'] = user_id
-        user_service.update(user_data)
+        user_service.update_users(user_data)
         return None, 200
 
 
 @api.route('/password')
 class UserView(Resource):
     def put(self):
-        pass
+        data = request.json
+
+        email = data.get("email")
+        old_password = data.get("old_password")
+        new_password = data.get("new_password")
+
+        user = user_service.get_user_by_email(email)
+
+        if user_service.compare_passwords(user.password, old_password):
+            # user.password = user_service.make_user_password_hash(new_password)
+            user_service.update_password({
+                "id": user.id,
+                "password": new_password
+            })
+            return "Password changed successfully", 201
+        else:
+            return "Password did not changed", 400

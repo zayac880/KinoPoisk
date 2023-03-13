@@ -26,10 +26,6 @@ class UsersService:
         user_data['password'] = self.make_user_password_hash(user_data.get('password'))
         return self.dao.create(user_data)
 
-    def update(self, user_data):
-        user_data['password'] = self.make_user_password_hash(user_data.get('password'))
-        self.dao.update(user_data)
-        return self.dao
 
     def delete(self, uid):
         self.dao.delete(uid)
@@ -48,3 +44,11 @@ class UsersService:
             self.make_user_password_hash(other_password),
         )
 
+    def update_password(self, data):
+        data['password'] = self.make_user_password_hash(data.get('password'))
+        self.dao.update_password(data)
+        return self.dao
+
+    def update_users(self, user_data):
+        self.dao.update_user(user_data)
+        return self.dao
