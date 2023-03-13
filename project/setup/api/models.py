@@ -25,7 +25,7 @@ user: Model = api.model('пользователь', {
     'id': fields.Integer(required=True, example='1'),
     'email': fields.String(required=True, example='email'),
     'password': fields.String(required=True, example='password='),
-    'name': fields.String(required=True, example='name'),
-    'surname': fields.String(required=True, example='surname'),
-    'favorite_genre': fields.String(required=True, example='favorite_genre')
+    'name': fields.String(example='name'),
+    'surname': fields.String(example='surname'),
+    'favorite_genre': fields.String(example='favorite_genre')
 })

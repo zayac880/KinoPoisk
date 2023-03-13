@@ -32,11 +32,9 @@ class UsersDAO:
 
     def update(self, user_data):
         user = self.get_one(user_data.get("id"))
-        user.username = user_data.get("email")
-        user.username = user_data.get("password")
-        user.username = user_data.get("name")
-        user.username = user_data.get("surname")
-        user.username = user_data.get("favorite_genre")
+        user.name = user_data.get("name")
+        user.surname = user_data.get("surname")
+        user.favorite_genre = user_data.get("favorite_genre")
 
         self.session.add(user)
         self.session.commit()
